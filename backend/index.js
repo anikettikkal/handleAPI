@@ -24,6 +24,15 @@ app.get('/api/products', (req,res) =>{
             image:"https://assets.ajio.com/medias/sys_master/root/20230526/DhnL/64709885d55b7d0c631574bf/-473Wx593H-463573083-white-MODEL.jpg"
         }
     ]
+   // http://localhost:3000/api/products?search=tablewooden
+
+   if (req.query.search) {
+        const filterProducts = products.filter(product => product.name.includes(req.
+            query.search))
+        res.send(filterProducts)
+        return;
+   }
+
 
     setTimeout(()=>{
         res.send(products)
